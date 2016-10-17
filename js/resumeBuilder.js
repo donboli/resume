@@ -48,32 +48,27 @@ var bio = {
 };
 
 var education = {
-  schools: [
-    {
-      name: "Universidad de Belgrano",
-      location: "Buenos Aires",
-      degree: "Diploma",
-      majors: ["Computer Engineering"],
-      dates: "March 2008 - December 2015",
-      url: "http://www.ub.edu.ar/"
-    }
-  ],
-  online_classes: [
-    {
-      title: "HTML5 Part 1: HTML5 Coding Essentials and Best Practices",
-      school: "edX",
-      dates: "October 2015 - December 2015",
-      url: "https://www.edx.org/course/html5-part-1-html5-coding-essentials-w3cx-html5-1x-1",
-      certificate: "https://courses.edx.org/certificates/4f142509922c4cc4a9d3a5ee1f331f50"
-    },
-    {
-      title: "HTML5 Part 2: Advanced Techniques for Designing HTML5 Apps",
-      school: "edX",
-      dates: "December 2015 - January 2016",
-      url: "https://www.edx.org/course/html5-part-2-advanced-techniques-w3cx-html5-2x-1",
-      certificate: "https://courses.edx.org/certificates/9eafdeb1e4e740fa9c325a5359032c10"
-    }
-  ],
+  schools: [{
+    name: "Universidad de Belgrano",
+    location: "Buenos Aires",
+    degree: "Diploma",
+    majors: ["Computer Engineering"],
+    dates: "March 2008 - December 2015",
+    url: "http://www.ub.edu.ar/"
+  }],
+  online_classes: [{
+    title: "HTML5 Part 1: HTML5 Coding Essentials and Best Practices",
+    school: "edX",
+    dates: "October 2015 - December 2015",
+    url: "https://www.edx.org/course/html5-part-1-html5-coding-essentials-w3cx-html5-1x-1",
+    certificate: "https://courses.edx.org/certificates/4f142509922c4cc4a9d3a5ee1f331f50"
+  }, {
+    title: "HTML5 Part 2: Advanced Techniques for Designing HTML5 Apps",
+    school: "edX",
+    dates: "December 2015 - January 2016",
+    url: "https://www.edx.org/course/html5-part-2-advanced-techniques-w3cx-html5-2x-1",
+    certificate: "https://courses.edx.org/certificates/9eafdeb1e4e740fa9c325a5359032c10"
+  }],
 
   display: function() {
     education.schools.forEach(function(school) {
@@ -97,8 +92,9 @@ var education = {
       var formattedSchool = HTMLonlineSchool.replace("%data%", online_class.school);
       var formattedDates = HTMLonlineDates.replace("%data%", online_class.dates);
 
+      var formattedURL = "";
       if (online_class.certificate) {
-        var formattedURL = HTMLonlineURL.replace("#", online_class.certificate).replace("%data%", "Certificate");
+        formattedURL = HTMLonlineURL.replace("#", online_class.certificate).replace("%data%", "Certificate");
       }
 
       $(".education-entry:last").append(formattedTitle + formattedSchool + formattedDates + formattedURL);
@@ -107,24 +103,21 @@ var education = {
 };
 
 var work = {
-  jobs: [
-    {
-      employer: "EnvíaYa!",
-      title: "Ruby on Rails Developer",
-      location: "Remote (from Puebla)",
-      dates: "May 2015 - May 2016",
-      description: "Development, maintenance and rework of the overall company's web application. Customization and further development of APIs towards logistics carriers (e. g. DHL, UPS, FedEx and Redpack). Integration of payment gateways: PayPal, Stripe, Conekta and PayU.",
-      url: "https://enviaya.com.mx"
-    },
-    {
-      employer: "Redmint",
-      title: "Ruby on Rails Developer",
-      location: "Buenos Aires",
-      dates: "June 2014 - December 2014",
-      description: "Maintenance and development of web applications built with Ruby on Rails.",
-      url: "http://redmintlabs.com/"
-    }
-  ],
+  jobs: [{
+    employer: "EnvíaYa!",
+    title: "Ruby on Rails Developer",
+    location: "Remote (from Puebla)",
+    dates: "May 2015 - May 2016",
+    description: "Development, maintenance and rework of the overall company's web application. Customization and further development of APIs towards logistics carriers (e. g. DHL, UPS, FedEx and Redpack). Integration of payment gateways: PayPal, Stripe, Conekta and PayU.",
+    url: "https://enviaya.com.mx"
+  }, {
+    employer: "Redmint",
+    title: "Ruby on Rails Developer",
+    location: "Buenos Aires",
+    dates: "June 2014 - December 2014",
+    description: "Maintenance and development of web applications built with Ruby on Rails.",
+    url: "http://redmintlabs.com/"
+  }],
 
   display: function() {
     work.jobs.forEach(function(job) {
@@ -150,15 +143,13 @@ var work = {
 
 
 var projects = {
-  projects: [
-    {
-      title: "Portfolio",
-      dates: "October 2016",
-      description: "A fully responsive portfolio page",
-      images: ["images/portfolio.png"],
-      repository: "https://github.com/donboli/portfolio"
-    }
-  ],
+  projects: [{
+    title: "Portfolio",
+    dates: "October 2016",
+    description: "A fully responsive portfolio page",
+    images: ["images/portfolio.png"],
+    repository: "https://github.com/donboli/portfolio"
+  }],
 
   display: function() {
     projects.projects.forEach(function(project) {
