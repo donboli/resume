@@ -5,12 +5,13 @@ var bio = {
     mobile: "+52 1 222 765 4633",
     email: "juan.becker2@gmail.com",
     github: "donboli",
+    linkedin: "https://mx.linkedin.com/in/juan-wolfgang-a-becker-1b41991b",
     twitter: null,
     location: "Puebla, Mexico"
   },
   welcomeMessage: "Hi, I'm a web developer with 2 years of experience using the Ruby on Rails framework. I've recently become more interested in front-end development frameworks, such as React. Overall, I'm always keen on learning new technologies.",
   skills: [
-    "HTML", "CSS", "Javascript"
+    "HTML", "CSS", "Javascript", "Ruby on Rails", "React", "Bootstrap", "Java", "SQL", "Git"
   ],
   bio_pic: "images/me.jpg",
 
@@ -27,13 +28,7 @@ var bio = {
     }
 
     var formattedGithub = HTMLgithub.replace('%data%', bio.contacts.github);
-
-    if (bio.contacts.blog) {
-      var formattedBlog = HTMLblog.replace('%data%', bio.contacts.blog);
-    }
-
     var formattedLocation = HTMLlocation.replace('%data%', bio.contacts.location);
-
     var formattedWelcomeMessage = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage);
 
     $("#header").append(formattedName);
@@ -45,7 +40,6 @@ var bio = {
     $("#topContacts").append(formattedEmail);
     $("#topContacts").append(formattedTwitter);
     $("#topContacts").append(formattedGithub);
-    $("#topContacts").append(formattedBlog);
     $("#topContacts").append(formattedLocation);
 
     if (bio.skills.length > 0) {
@@ -74,13 +68,15 @@ var education = {
       title: "HTML5 Part 1: HTML5 Coding Essentials and Best Practices",
       school: "edX",
       dates: "October 2015 - December 2015",
-      url: "https://courses.edx.org/certificates/4f142509922c4cc4a9d3a5ee1f331f50"
+      url: "https://www.edx.org/course/html5-part-1-html5-coding-essentials-w3cx-html5-1x-1",
+      certificate: "https://courses.edx.org/certificates/4f142509922c4cc4a9d3a5ee1f331f50"
     },
     {
       title: "HTML5 Part 2: Advanced Techniques for Designing HTML5 Apps",
       school: "edX",
       dates: "December 2015 - January 2016",
-      url: "https://courses.edx.org/certificates/9eafdeb1e4e740fa9c325a5359032c10"
+      url: "https://www.edx.org/course/html5-part-2-advanced-techniques-w3cx-html5-2x-1",
+      certificate: "https://courses.edx.org/certificates/9eafdeb1e4e740fa9c325a5359032c10"
     }
   ],
 
@@ -88,7 +84,7 @@ var education = {
     education.schools.forEach(function(school) {
       $("#education").append(HTMLschoolStart);
 
-      var formattedName = HTMLschoolName.replace("%data%", school.name);
+      var formattedName = HTMLschoolName.replace("#", school.url).replace("%data%", school.name);
       var formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
       var formattedDates = HTMLschoolDates.replace("%data%", school.dates);
       var formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
@@ -99,49 +95,54 @@ var education = {
 
     $("#education").append(HTMLonlineClasses);
 
-    for (var i = 0; i < education.online_classes.length; i++) {
+    education.online_classes.forEach(function(online_class) {
       $("#education").append(HTMLschoolStart);
 
-      var formattedTitle = HTMLonlineTitle.replace("%data%", education.online_classes[i].title);
-      var formattedSchool = HTMLonlineSchool.replace("%data%", education.online_classes[i].school);
-      var formattedDates = HTMLonlineDates.replace("%data%", education.online_classes[i].dates);
-      var formattedURL = HTMLonlineURL.replace("%data%", education.online_classes[i].url);
+      var formattedTitle = HTMLonlineTitle.replace("#", online_class.url).replace("%data%", online_class.title);
+      var formattedSchool = HTMLonlineSchool.replace("%data%", online_class.school);
+      var formattedDates = HTMLonlineDates.replace("%data%", online_class.dates);
+
+      if (online_class.certificate) {
+        var formattedURL = HTMLonlineURL.replace("#", online_class.certificate).replace("%data%", "Certificate");
+      }
 
       $(".education-entry:last").append(formattedTitle + formattedSchool + formattedDates + formattedURL);
-    }
+    });
   }
 };
 
 var work = {
   jobs: [
     {
-      employer: "lalala",
-      title: "Ruby Developer",
-      location: "Puebla",
-      dates: "January 2014 - Future",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, harum."
+      employer: "EnvíaYa!",
+      title: "Ruby on Rails Developer",
+      location: "Remote (from Puebla)",
+      dates: "May 2015 - May 2016",
+      description: "Development, maintenance and rework of the overall company's web application. Customization and further development of APIs towards logistics carriers (e. g. DHL, UPS, FedEx and Redpack). Integration of payment gateways: PayPal, Stripe, Conekta and PayU.",
+      url: "https://enviaya.com.mx"
     },
     {
-      employer: "lololo",
+      employer: "Redmint",
       title: "Ruby on Rails Developer",
       location: "Buenos Aires",
-      dates: "2013 - December 12, 2014",
-      description: "Laborum praesentium facilis nobis consectetur pariatur molestiae, officiis."
+      dates: "June 2014 - December 2014",
+      description: "Maintenance and development of web applications built with Ruby on Rails.",
+      url: "http://redmintlabs.com/"
     }
   ],
 
   display: function() {
-    for (job in work.jobs) {
+    work.jobs.forEach(function(job) {
       $("#workExperience").append(HTMLworkStart);
 
-      var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-      var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-      var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-      var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-      var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+      var formattedEmployer = HTMLworkEmployer.replace("#", job.url).replace("%data%", job.employer);
+      var formattedTitle = HTMLworkTitle.replace("%data%", job.title);
+      var formattedDates = HTMLworkDates.replace("%data%", job.dates);
+      var formattedLocation = HTMLworkLocation.replace("%data%", job.location);
+      var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
 
       $(".work-entry:last").append(formattedEmployer + formattedTitle + formattedDates + formattedLocation + formattedDescription);
-    }
+    });
 
     // $("#main").append(internationalizeButton);
 
@@ -157,34 +158,28 @@ var projects = {
   projects: [
     {
       title: "Portfolio",
-      dates: "5 October 2016",
+      dates: "October 2016",
       description: "A fully responsive portfolio page",
-      image: "images/portfolio.png"
-    },
-    {
-      title: "aassddd",
-      dates: "December 2015 - March 2016",
-      description: "Lorem ipsum dolor sit amet.",
-      image: null
+      images: ["images/portfolio.png"],
+      repository: "https://github.com/donboli/portfolio"
     }
   ],
 
   display: function() {
-    for (var i = 0; i < projects.projects.length; i++) {
+    projects.projects.forEach(function(project) {
       $("#projects").append(HTMLprojectStart);
 
-      var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
-      var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
-      var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+      var formattedTitle = HTMLprojectTitle.replace("#", project.repository).replace("%data%", project.title);
+      var formattedDates = HTMLprojectDates.replace("%data%", project.dates);
+      var formattedDescription = HTMLprojectDescription.replace("%data%", project.description);
 
-      if (projects.projects[i].image) {
-        var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].image);
-      } else {
-        var formattedImage = "";
-      }
+      var formattedImage = "";
+      project.images.forEach(function(image) {
+        formattedImage += HTMLprojectImage.replace("%data%", image);
+      });
 
       $(".project-entry:last").append(formattedTitle + formattedDates + formattedDescription + formattedImage);
-    }
+    });
   }
 };
 
