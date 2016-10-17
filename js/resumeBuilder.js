@@ -23,24 +23,19 @@ var bio = {
     var formattedMobile = HTMLmobile.replace('%data%', bio.contacts.mobile);
     var formattedEmail = HTMLemail.replace('%data%', bio.contacts.email);
 
+    var formattedTwitter = "";
     if (bio.contacts.twitter) {
-      var formattedTwitter = HTMLtwitter.replace('%data%', bio.contacts.twitter);
+      formattedTwitter = HTMLtwitter.replace('%data%', bio.contacts.twitter);
     }
 
-    var formattedGithub = HTMLgithub.replace('%data%', bio.contacts.github);
+    var formattedGithub = HTMLgithub.replace("#", "https://github.com/" + bio.contacts.github).replace('%data%', bio.contacts.github);
+    var formattedLinkedin = HTMLlinkedin.replace("#", bio.contacts.linkedin).replace('%data%', bio.name);
     var formattedLocation = HTMLlocation.replace('%data%', bio.contacts.location);
     var formattedWelcomeMessage = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage);
 
-    $("#header").append(formattedName);
-    $("#header").append(formattedRole);
-    $("#header").append(formattedBioPic);
-    $("#header").append(formattedWelcomeMessage);
+    $("#header").append(formattedName + formattedRole + formattedBioPic + formattedWelcomeMessage);
 
-    $("#topContacts").append(formattedMobile);
-    $("#topContacts").append(formattedEmail);
-    $("#topContacts").append(formattedTwitter);
-    $("#topContacts").append(formattedGithub);
-    $("#topContacts").append(formattedLocation);
+    $("#topContacts").append(formattedMobile + formattedEmail + formattedTwitter + formattedGithub + formattedLinkedin + formattedLocation);
 
     if (bio.skills.length > 0) {
       $("#header").append(HTMLskillsStart);
