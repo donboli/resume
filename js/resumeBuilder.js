@@ -44,6 +44,14 @@ var bio = {
         $("#skills").append(formattedSkill);
       }
     }
+  },
+
+  displayFooter: function() {
+    var formattedIconSkype = HTMLiconSkype.replace('#', bio.contacts.skype);
+    var formattedIconLinkedin = HTMLiconLinkedin.replace('#', bio.contacts.linkedin);
+    var formattedIconGithub = HTMLiconGithub.replace('#', bio.contacts.github);
+
+    $("#footerContacts").append(formattedIconSkype + formattedIconLinkedin + formattedIconGithub);
   }
 };
 
@@ -173,5 +181,7 @@ bio.display();
 projects.display();
 work.display();
 education.display();
+
+bio.displayFooter();
 
 $("#mapDiv").append(googleMap);
