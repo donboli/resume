@@ -58,9 +58,9 @@ var HTMLonlineURL = '<br><a href="#" target="_blank">%data%</a>';
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
-// var HTMLiconSkype = '<div class="zocial-skype"><a href="#"></a></div>';
-// var HTMLiconLinkedin = '<div class="zocial-linkedin"><a href="#"></a></div>';
-// var HTMLiconGithub = '<div class="zocial-github"><a href="#"></a></div>';
+var HTMLiconSkype = '<a><i class="fa fa-skype fa-2x" title="#" aria-hidden="true"></i></a>';
+var HTMLiconLinkedin = '<a href="#" target="_blank"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>';
+var HTMLiconGithub = '<a href="#" target="_blank"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>';
 
 /*
 The Internationalize Names challenge found in the lesson Flow Control from JavaScript Basics requires you to create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.

@@ -7,6 +7,7 @@ var bio = {
     github: "donboli",
     linkedin: "https://mx.linkedin.com/in/juan-wolfgang-a-becker-1b41991b",
     twitter: null,
+    skype: "wolfgangbecker2",
     location: "Puebla, Mexico"
   },
   welcomeMessage: "Hi, I'm a web developer with 2 years of experience using the Ruby on Rails framework. I've recently become more interested in front-end development frameworks, such as React. Overall, I'm always keen on learning new technologies.",
@@ -49,7 +50,7 @@ var bio = {
   displayFooter: function() {
     var formattedIconSkype = HTMLiconSkype.replace('#', bio.contacts.skype);
     var formattedIconLinkedin = HTMLiconLinkedin.replace('#', bio.contacts.linkedin);
-    var formattedIconGithub = HTMLiconGithub.replace('#', bio.contacts.github);
+    var formattedIconGithub = HTMLiconGithub.replace('#', "https://github.com/" + bio.contacts.github);
 
     $("#footerContacts").append(formattedIconSkype + formattedIconLinkedin + formattedIconGithub);
   }
