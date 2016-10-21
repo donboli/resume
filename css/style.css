@@ -157,6 +157,16 @@ a {
   box-shadow: 0 5px 5px #ccc;
 }
 
+#workExperience,
+#education {
+  padding: 5px 0 10px;
+}
+
+.certificate {
+  margin: 0;
+  clear: both;
+}
+
 .flex-box {
   display: -webkit-flex;
   display: flex;
