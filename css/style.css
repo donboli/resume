@@ -16,6 +16,10 @@ h6 {
   font-family: "Catamaran", sans-serif;
 }
 
+body {
+  visibility: hidden;
+}
+
 .clear-fix {
   overflow: auto;
 }

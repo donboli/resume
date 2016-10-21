@@ -186,3 +186,8 @@ education.display();
 bio.displayFooter();
 
 $("#mapDiv").append(googleMap);
+
+// Avoid flashes of unstyled content during page load
+$(window).load(function() {
+  $("body").css("visibility", "visible");
+});
