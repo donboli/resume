@@ -1,64 +1,99 @@
-var data = "%data%";
+(function() {
+  var data = "%data%";
 
-var bio = {
-  name: "Wolfgang Becker",
-  role: "Web Developer",
-  contacts: {
-    mobile: "+52 1 222 765 4633",
-    email: "juan.becker2@gmail.com",
-    github: "donboli",
-    linkedin: "https://mx.linkedin.com/in/juan-wolfgang-a-becker-1b41991b",
-    twitter: null,
-    skype: "wolfgangbecker2",
-    location: "Puebla, Mexico"
-  },
-  welcomeMessage: "Hi, I'm a web developer with 2 years of experience using the Ruby on Rails framework. I've recently become more interested in front-end development frameworks, such as React. Overall, I'm always keen on learning new technologies.",
-  skills: [
-    "HTML", "CSS", "Javascript", "Ruby on Rails", "React", "Bootstrap", "Java", "SQL", "Git"
-  ],
-  biopic: "images/me.jpg",
-
-  display: function() {
-    var formattedName = HTMLheaderName.replace(data, bio.name);
-    var formattedRole = HTMLheaderRole.replace(data, bio.role);
-    var formattedBioPic = HTMLbioPic.replace(data, bio.biopic);
-
-    var formattedMobile = HTMLmobile.replace(data, bio.contacts.mobile);
-    var formattedEmail = HTMLemail.replace(data, bio.contacts.email);
-
-    var formattedTwitter = "";
-    if (bio.contacts.twitter) {
-      formattedTwitter = HTMLtwitter.replace(data, bio.contacts.twitter);
+  var model = {
+    init: function() {
+      this.bio = {
+        name: "Wolfgang Becker",
+        role: "Web Developer",
+        contacts: {
+          mobile: "+52 1 222 765 4633",
+          email: "juan.becker2@gmail.com",
+          github: "donboli",
+          linkedin: "https://mx.linkedin.com/in/juan-wolfgang-a-becker-1b41991b",
+          twitter: null,
+          skype: "wolfgangbecker2",
+          location: "Puebla, Mexico"
+        },
+        welcomeMessage: "Hi, I'm a web developer with 2 years of experience using the Ruby on Rails framework. I've recently become more interested in front-end development frameworks, such as React. Overall, I'm always keen on learning new technologies.",
+        skills: [
+          "HTML", "CSS", "Javascript", "Ruby on Rails", "React", "Bootstrap", "Java", "SQL", "Git"
+        ],
+        biopic: "images/me.jpg"
+      };
     }
+  };
 
-    var formattedGithub = HTMLgithub.replace("#", "https://github.com/" + bio.contacts.github).replace(data, bio.contacts.github);
-    var formattedLinkedin = HTMLlinkedin.replace("#", bio.contacts.linkedin).replace(data, bio.name);
-    var formattedLocation = HTMLlocation.replace(data, bio.contacts.location);
-    var formattedWelcomeMessage = HTMLwelcomeMsg.replace(data, bio.welcomeMessage);
+  var controller = {
+    init: function() {
+      model.init();
+      bioView.init();
+    },
 
-    $("#header").append(formattedName + formattedRole + formattedBioPic + formattedWelcomeMessage);
+    getBio: function() {
+      return model.bio;
+    }
+  };
 
-    $("#topContacts").append(formattedMobile + formattedEmail + formattedTwitter + formattedGithub + formattedLinkedin + formattedLocation);
+  var bioView = {
+    init: function() {
+      this.$header = $("#header");
+      this.$topContacts = $("#topContacts");
+      this.$footerContacts = $("#footerContacts");
 
-    if (bio.skills.length > 0) {
-      $("#header").append(HTMLskillsStart);
-      for (var i = 0; i < bio.skills.length; i++) {
-        var formattedSkill = HTMLskills.replace(data, bio.skills[i]);
-        $("#skills").append(formattedSkill);
+      this.render();
+    },
+
+    render: function() {
+      var bio = controller.getBio();
+
+      var formattedName = HTMLheaderName.replace(data, bio.name);
+      var formattedRole = HTMLheaderRole.replace(data, bio.role);
+      var formattedBioPic = HTMLbioPic.replace(data, bio.biopic);
+
+      var formattedMobile = HTMLmobile.replace(data, bio.contacts.mobile);
+      var formattedEmail = HTMLemail.replace(data, bio.contacts.email);
+
+      var formattedTwitter = "";
+      if (bio.contacts.twitter) {
+        formattedTwitter = HTMLtwitter.replace(data, bio.contacts.twitter);
       }
+
+      var formattedGithub = HTMLgithub.replace("#", "https://github.com/" + bio.contacts.github).replace(data, bio.contacts.github);
+      var formattedLinkedin = HTMLlinkedin.replace("#", bio.contacts.linkedin).replace(data, bio.name);
+      var formattedLocation = HTMLlocation.replace(data, bio.contacts.location);
+      var formattedWelcomeMessage = HTMLwelcomeMsg.replace(data, bio.welcomeMessage);
+
+      this.$header.append(formattedName + formattedRole + formattedBioPic + formattedWelcomeMessage);
+
+      this.$topContacts.append(formattedMobile + formattedEmail + formattedTwitter + formattedGithub + formattedLinkedin + formattedLocation);
+
+      if (bio.skills.length > 0) {
+        this.$header.append(HTMLskillsStart);
+        for (var i = 0; i < bio.skills.length; i++) {
+          var formattedSkill = HTMLskills.replace(data, bio.skills[i]);
+          $('#skills').append(formattedSkill);
+        }
+      }
+
+      this.displayFooter(bio);
+    },
+
+    displayFooter: function(bio) {
+      var formattedIconSkype = HTMLiconSkype.replace('#', bio.contacts.skype);
+      var formattedIconLinkedin = HTMLiconLinkedin.replace('#', bio.contacts.linkedin);
+      var formattedIconGithub = HTMLiconGithub.replace('#', "https://github.com/" + bio.contacts.github);
+
+      this.$footerContacts.append(formattedIconSkype + formattedIconLinkedin + formattedIconGithub);
     }
+  };
 
-    bio.displayFooter();
-  },
+  controller.init();
 
-  displayFooter: function() {
-    var formattedIconSkype = HTMLiconSkype.replace('#', bio.contacts.skype);
-    var formattedIconLinkedin = HTMLiconLinkedin.replace('#', bio.contacts.linkedin);
-    var formattedIconGithub = HTMLiconGithub.replace('#', "https://github.com/" + bio.contacts.github);
+  window.model = model;
+})();
 
-    $("#footerContacts").append(formattedIconSkype + formattedIconLinkedin + formattedIconGithub);
-  }
-};
+var data = "%data%";
 
 var education = {
   schools: [{
@@ -182,7 +217,7 @@ var projects = {
   }
 };
 
-bio.display();
+// bio.display();
 projects.display();
 work.display();
 education.display();
