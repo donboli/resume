@@ -64,13 +64,13 @@ function initializeMap() {
     var locations = [];
 
     // adds the single location property from bio to the locations array
-    locations.push(window.model.bio.contacts.location);
+    locations.push(window.controller.getBio().contacts.location);
 
     // iterates through school locations and appends each location to
     // the locations array. Note that forEach is used for array iteration
     // as described in the Udacity FEND Style Guide:
     // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
-    education.schools.forEach(function(school) {
+    window.controller.getEducation().schools.forEach(function(school) {
       locations.push(school.location);
     });
 
