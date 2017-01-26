@@ -45,6 +45,24 @@
           certificate: "https://courses.edx.org/certificates/9eafdeb1e4e740fa9c325a5359032c10"
         }]
       };
+
+      this.work = {
+        jobs: [{
+          employer: "EnvíaYa!",
+          title: "Ruby on Rails Developer",
+          location: "Remote (from Puebla)",
+          dates: "May 2015 - May 2016",
+          description: "Development, maintenance and rework of the overall company's web application. Customization and further development of APIs towards logistics carriers (e. g. DHL, UPS, FedEx and Redpack). Integration of payment gateways: PayPal, Stripe, Conekta and PayU.",
+          url: "https://enviaya.com.mx"
+        }, {
+          employer: "Redmint",
+          title: "Ruby on Rails Developer",
+          location: "Buenos Aires",
+          dates: "June 2014 - December 2014",
+          description: "Maintenance and development of web applications built with Ruby on Rails.",
+          url: "http://redmintlabs.com/"
+        }]
+      };
     }
   };
 
@@ -53,6 +71,7 @@
       model.init();
       bioView.init();
       educationView.init();
+      workView.init();
     },
 
     getBio: function() {
@@ -61,6 +80,10 @@
 
     getEducation: function() {
       return model.education;
+    },
+
+    getWork: function() {
+      return model.work;
     }
   };
 
@@ -162,52 +185,45 @@
     }
   };
 
+  var workView = {
+    init: function() {
+      this.$workExperience = $("#workExperience");
+
+      this.render();
+    },
+
+    render: function() {
+      var work = controller.getWork();
+
+      work.jobs.forEach((function ($workExperience) {
+        return function(job) {
+          $workExperience.append(HTMLworkStart);
+
+          var formattedEmployer = HTMLworkEmployer.replace("#", job.url).replace(data, job.employer);
+          var formattedTitle = HTMLworkTitle.replace(data, job.title);
+          var formattedDates = HTMLworkDates.replace(data, job.dates);
+          var formattedLocation = HTMLworkLocation.replace(data, job.location);
+          var formattedDescription = HTMLworkDescription.replace(data, job.description);
+
+          $(".work-entry:last").append(formattedEmployer + formattedTitle + formattedDates + formattedLocation + formattedDescription);
+        };
+      })(this.$workExperience));
+
+      // $("#main").append(internationalizeButton);
+
+      var inName = function(name) {
+        var names = name.trim().split(" ");
+        return names[0][0].toUpperCase() + names[0].slice(1).toLowerCase() + " " + names[1].toUpperCase();
+      };
+    }
+  };
+
   controller.init();
 
   window.controller = controller; // make controller available to outter resources
 })();
 
 var data = "%data%";
-
-var work = {
-  jobs: [{
-    employer: "EnvíaYa!",
-    title: "Ruby on Rails Developer",
-    location: "Remote (from Puebla)",
-    dates: "May 2015 - May 2016",
-    description: "Development, maintenance and rework of the overall company's web application. Customization and further development of APIs towards logistics carriers (e. g. DHL, UPS, FedEx and Redpack). Integration of payment gateways: PayPal, Stripe, Conekta and PayU.",
-    url: "https://enviaya.com.mx"
-  }, {
-    employer: "Redmint",
-    title: "Ruby on Rails Developer",
-    location: "Buenos Aires",
-    dates: "June 2014 - December 2014",
-    description: "Maintenance and development of web applications built with Ruby on Rails.",
-    url: "http://redmintlabs.com/"
-  }],
-
-  display: function() {
-    work.jobs.forEach(function(job) {
-      $("#workExperience").append(HTMLworkStart);
-
-      var formattedEmployer = HTMLworkEmployer.replace("#", job.url).replace(data, job.employer);
-      var formattedTitle = HTMLworkTitle.replace(data, job.title);
-      var formattedDates = HTMLworkDates.replace(data, job.dates);
-      var formattedLocation = HTMLworkLocation.replace(data, job.location);
-      var formattedDescription = HTMLworkDescription.replace(data, job.description);
-
-      $(".work-entry:last").append(formattedEmployer + formattedTitle + formattedDates + formattedLocation + formattedDescription);
-    });
-
-    // $("#main").append(internationalizeButton);
-
-    var inName = function(name) {
-      var names = name.trim().split(" ");
-      return names[0][0].toUpperCase() + names[0].slice(1).toLowerCase() + " " + names[1].toUpperCase();
-    };
-  }
-};
-
 
 var projects = {
   projects: [{
@@ -237,7 +253,6 @@ var projects = {
 };
 
 projects.display();
-work.display();
 
 $("#mapDiv").append(googleMap);
 
