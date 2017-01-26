@@ -63,6 +63,14 @@
           url: "http://redmintlabs.com/"
         }]
       };
+
+      this.projects = [{
+        title: "Portfolio",
+        dates: "October 2016",
+        description: "A fully responsive portfolio page",
+        images: ["images/portfolio.png"],
+        repository: "https://github.com/donboli/portfolio"
+      }];
     }
   };
 
@@ -72,6 +80,7 @@
       bioView.init();
       educationView.init();
       workView.init();
+      projectsView.init();
     },
 
     getBio: function() {
@@ -84,6 +93,10 @@
 
     getWork: function() {
       return model.work;
+    },
+
+    getProjects: function() {
+      return model.projects;
     }
   };
 
@@ -209,8 +222,6 @@
         };
       })(this.$workExperience));
 
-      // $("#main").append(internationalizeButton);
-
       var inName = function(name) {
         var names = name.trim().split(" ");
         return names[0][0].toUpperCase() + names[0].slice(1).toLowerCase() + " " + names[1].toUpperCase();
@@ -218,41 +229,39 @@
     }
   };
 
+  var projectsView = {
+    init: function() {
+      this.$projects = $("#projects");
+
+      this.render();
+    },
+
+    render: function() {
+      var projects = controller.getProjects();
+
+      projects.forEach((function($projects) {
+        return function(project) {
+          $projects.append(HTMLprojectStart);
+
+          var formattedTitle = HTMLprojectTitle.replace("#", project.repository).replace(data, project.title);
+          var formattedDates = HTMLprojectDates.replace(data, project.dates);
+          var formattedDescription = HTMLprojectDescription.replace(data, project.description);
+
+          var formattedImage = "";
+          project.images.forEach(function(image) {
+            formattedImage += HTMLprojectImage.replace(data, image);
+          });
+
+          $(".project-entry:last").append(formattedTitle + formattedDates + formattedDescription + formattedImage);
+        };
+      })(this.$projects));
+    }
+  };
+
   controller.init();
 
   window.controller = controller; // make controller available to outter resources
 })();
-
-var data = "%data%";
-
-var projects = {
-  projects: [{
-    title: "Portfolio",
-    dates: "October 2016",
-    description: "A fully responsive portfolio page",
-    images: ["images/portfolio.png"],
-    repository: "https://github.com/donboli/portfolio"
-  }],
-
-  display: function() {
-    projects.projects.forEach(function(project) {
-      $("#projects").append(HTMLprojectStart);
-
-      var formattedTitle = HTMLprojectTitle.replace("#", project.repository).replace(data, project.title);
-      var formattedDates = HTMLprojectDates.replace(data, project.dates);
-      var formattedDescription = HTMLprojectDescription.replace(data, project.description);
-
-      var formattedImage = "";
-      project.images.forEach(function(image) {
-        formattedImage += HTMLprojectImage.replace(data, image);
-      });
-
-      $(".project-entry:last").append(formattedTitle + formattedDates + formattedDescription + formattedImage);
-    });
-  }
-};
-
-projects.display();
 
 $("#mapDiv").append(googleMap);
 
