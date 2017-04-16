@@ -16,8 +16,6 @@ The <head> of a website generally links to important resources the page will
       <meta charset="utf-8">
       <!-- Tells the browser what the title of this page should be. -->
       <title>Resume</title>
-      <!-- Load the page styles. -->
-      <link href="css/style.css" rel="stylesheet">
       <!-- Load the page scripts. -->
       <script src="https://use.fontawesome.com/e7051a4b39.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA2DPWd7gnQ9ztFei6GnTGwBsDo9ytZu-4"></script>
@@ -68,52 +66,6 @@ The <head> of a website generally links to important resources the page will
     the DOM. jQuery is fast and easy to use, but it doesn't do anything
     you can't accomplish with vanilla (regular) JavaScript.
     -->
-    <script src="js/jQuery.js"></script>
-    <!-- More on helper.js in the class -->
-    <script src="js/helper.js"></script>
-    <!--
-    The next line tells the browser where to download the JavaScript file you'll be
-    writing. In resumeBuilder.js, you'll be writing code that builds the resume
-    dynamically when this website, index.html, is opened.
-    -->
-    <script src="js/resumeBuilder.js"></script>
-    <!--
-    These scripts are written in JavaScript. You'll be breaking them down as part of
-    a quiz. Essentially, the next few lines are checking to see if you have not
-    changed each section of the resume. If you have not made any changes to a section
-    of the resume, then that part of the resume does not show up. More on this in the
-    course.
-    -->
-    <script>
-    // Notice how all of a sudden there's JavaScript inside this HTML
-    // document? You can write JavaScript between <script> tags. At the end of your
-    // JavaScript, don't forget the closing script tag with the slash (/).
-    // Also, this is a JavaScript style comment. You can comment in JavaScript with:
-    //   two slashes for all following characters on a single line, or
-    /*
-    an opening and closing set of slash asterisks for block comments.
-    */
-    if(document.getElementsByClassName('flex-item').length === 0) {
-    document.getElementById('topContacts').style.display = 'none';
-    }
-    if(document.getElementsByTagName('h1').length === 0) {
-    document.getElementById('header').style.display = 'none';
-    }
-    if(document.getElementsByClassName('work-entry').length === 0) {
-    document.getElementById('workExperience').style.display = 'none';
-    }
-    if(document.getElementsByClassName('project-entry').length === 0) {
-    document.getElementById('projects').style.display = 'none';
-    }
-    if(document.getElementsByClassName('education-entry').length === 0) {
-    document.getElementById('education').style.display = 'none';
-    }
-    if(document.getElementsByClassName('flex-item').length === 0) {
-    document.getElementById('lets-connect').style.display = 'none';
-    }
-    if(document.getElementById('map') === null) {
-    document.getElementById('mapDiv').style.display = 'none';
-    }
-    </script>
+    <script src="dist/bundle.js"></script>
   </body>
 </html>
