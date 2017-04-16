@@ -15,11 +15,21 @@ module.exports = {
       {
         test: /\.(png|jpg)$/,
         use: ['url-loader']
+      },
+      {
+        test: /\.html$/,
+        use: ['file-loader?name=[name].[ext]']
       }
     ]
   },
   resolve: {
     modules: ["node_modules"],
     extensions: [".js", ".json"]
-  }
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 8000
+  },
+  devtool: "cheap-eval-source-map"
 };
