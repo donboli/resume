@@ -1,0 +1,18 @@
+<h2 class="subtitle">Education</h2>
+{{#each schools}}
+  <div class="education-entry">
+    <a href={{url}} target="_blank">{{name}} -- {{degree}}</a>
+    <div class="date-text">{{dates}}</div>
+    <div class="location-text">{{location}}</div>
+    <em><br>Major: {{major}}</em>
+  </div>
+{{/each}}
+
+<h3>Online Classes</h3>
+{{#each onlineCourses}}
+  <div class="education-entry">
+    <a href={{url}} target="_blank">{{title}} - {{school}}</a>
+    <div class="date-text">{{dates}}</div>
+    <a href={{certificate}} target="_blank" class="certificate">Certificate</a>
+  </div>
+{{/each}}

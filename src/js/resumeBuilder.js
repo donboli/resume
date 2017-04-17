@@ -90,7 +90,7 @@ window.education = {
     name: "Universidad de Belgrano",
     location: "Buenos Aires",
     degree: "Diploma",
-    majors: ["Computer Engineering"],
+    major: "Computer Engineering",
     dates: "March 2008 - December 2015",
     url: "http://www.ub.edu.ar/"
   }],
@@ -109,34 +109,10 @@ window.education = {
   }],
 
   display: function() {
-    education.schools.forEach(function(school) {
-      $("#education").append(HTMLschoolStart);
+    var template = require('../templates/education.hbs');
+    var educationHTML = template(this);
 
-      var formattedName = HTMLschoolName.replace("#", school.url).replace(data, school.name);
-      var formattedDegree = HTMLschoolDegree.replace(data, school.degree);
-      var formattedDates = HTMLschoolDates.replace(data, school.dates);
-      var formattedLocation = HTMLschoolLocation.replace(data, school.location);
-      var formattedMajor = HTMLschoolMajor.replace(data, school.majors.join(", "));
-
-      $(".education-entry:last").append(formattedName + formattedDegree + formattedDates + formattedLocation + formattedMajor);
-    });
-
-    $("#education").append(HTMLonlineClasses);
-
-    education.onlineCourses.forEach(function(online_class) {
-      $("#education").append(HTMLschoolStart);
-
-      var formattedTitle = HTMLonlineTitle.replace("#", online_class.url).replace(data, online_class.title);
-      var formattedSchool = HTMLonlineSchool.replace(data, online_class.school);
-      var formattedDates = HTMLonlineDates.replace(data, online_class.dates);
-
-      var formattedURL = "";
-      if (online_class.certificate) {
-        formattedURL = HTMLonlineURL.replace("#", online_class.certificate).replace(data, "Certificate");
-      }
-
-      $(".education-entry:last").append(formattedTitle + formattedSchool + formattedDates + formattedURL);
-    });
+    $("#education").append(educationHTML);
   }
 };
 
