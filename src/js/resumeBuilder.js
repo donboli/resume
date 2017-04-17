@@ -71,7 +71,7 @@ window.bio = {
   display: function() {
     var template = require('../templates/bio.hbs');
     var bioHTML = template(this);
-    $('#main').prepend(bioHTML);
+    $('#header').prepend(bioHTML);
 
     bio.displayFooter();
   },
