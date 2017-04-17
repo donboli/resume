@@ -28,7 +28,10 @@ module.exports = {
   },
   resolve: {
     modules: ["node_modules"],
-    extensions: [".js", ".json"]
+    extensions: [".js", ".json"],
+    alias: {
+      'handlebars': 'handlebars/runtime.js'
+    }
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),

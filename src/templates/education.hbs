@@ -1,7 +1,9 @@
 <h2 class="subtitle">Education</h2>
 {{#each schools}}
   <div class="education-entry">
-    <a href={{url}} target="_blank">{{name}} -- {{degree}}</a>
+    {{#link url class="certificate"}}
+      {{name}} -- {{degree}}
+    {{/link}}
     <div class="date-text">{{dates}}</div>
     <div class="location-text">{{location}}</div>
     <em><br>Major: {{major}}</em>
@@ -11,8 +13,12 @@
 <h3>Online Classes</h3>
 {{#each onlineCourses}}
   <div class="education-entry">
-    <a href={{url}} target="_blank">{{title}} - {{school}}</a>
+    {{#link url class="certificate"}}
+      {{title}} - {{school}}
+    {{/link}}
     <div class="date-text">{{dates}}</div>
-    <a href={{certificate}} target="_blank" class="certificate">Certificate</a>
+    {{#link certificate class="certificate"}}
+      Certificate
+    {{/link}}
   </div>
 {{/each}}

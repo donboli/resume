@@ -1,3 +1,17 @@
+var Handlebars = require('handlebars');
+
+Handlebars.registerHelper('link', function(url, options) {
+  url = Handlebars.escapeExpression(url);
+
+  var attrs = Object.keys(options.hash).map(function(key) {
+    return key + '="' + options.hash[key] + '"';
+  }).join(" ");
+
+  return new Handlebars.SafeString(
+    "<a href=" + url + " target='_blank'" + attrs + ">" + options.fn(this) + "</a>"
+  );
+});
+
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
 var HTMLheaderRole = '<span class="white-text role">%data%</span><hr>';
 
