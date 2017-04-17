@@ -69,34 +69,9 @@ window.bio = {
   biopic: require("../images/me.jpg"),
 
   display: function() {
-    var formattedName = HTMLheaderName.replace(data, bio.name);
-    var formattedRole = HTMLheaderRole.replace(data, bio.role);
-    var formattedBioPic = HTMLbioPic.replace(data, bio.biopic);
-
-    var formattedMobile = HTMLmobile.replace(data, bio.contacts.mobile);
-    var formattedEmail = HTMLemail.replace(data, bio.contacts.email);
-
-    var formattedTwitter = "";
-    if (bio.contacts.twitter) {
-      formattedTwitter = HTMLtwitter.replace(data, bio.contacts.twitter);
-    }
-
-    var formattedGithub = HTMLgithub.replace("#", "https://github.com/" + bio.contacts.github).replace(data, bio.contacts.github);
-    var formattedLinkedin = HTMLlinkedin.replace("#", bio.contacts.linkedin).replace(data, bio.name);
-    var formattedLocation = HTMLlocation.replace(data, bio.contacts.location);
-    var formattedWelcomeMessage = HTMLwelcomeMsg.replace(data, bio.welcomeMessage);
-
-    $("#header").append(formattedName + formattedRole + formattedBioPic + formattedWelcomeMessage);
-
-    $("#topContacts").append(formattedMobile + formattedEmail + formattedTwitter + formattedGithub + formattedLinkedin + formattedLocation);
-
-    if (bio.skills.length > 0) {
-      $("#header").append(HTMLskillsStart);
-      for (var i = 0; i < bio.skills.length; i++) {
-        var formattedSkill = HTMLskills.replace(data, bio.skills[i]);
-        $("#skills").append(formattedSkill);
-      }
-    }
+    var template = require('../templates/bio.hbs');
+    var bioHTML = template(this);
+    $('#main').prepend(bioHTML);
 
     bio.displayFooter();
   },

@@ -1,0 +1,45 @@
+<div id="header" class="center-content clear-fix">
+  <ul id="topContacts" class="flex-box">
+    <li class="flex-item">
+      <span class="colored-text">mobile</span>
+      <span class="white-text">{{contacts.mobile}}</span>
+    </li>
+    <li class="flex-item">
+      <span class="colored-text">email</span>
+      <span class="white-text">{{contacts.email}}</span>
+    </li>
+    {{#if contacts.twitter}}
+      <li class="flex-item">
+        <span class="colored-text">twitter</span>
+        <a href={{contacts.twitter}} target="_blank" class="white-text inline-link">{{contacts.twitter}}</a>
+      </li>
+    {{/if}}
+    <li class="flex-item">
+      <span class="colored-text">github</span>
+      <a href="https://github.com/{{contacts.github}}" target="_blank" class="white-text inline-link">{{contacts.github}}</a>
+    </li>
+    <li class="flex-item">
+      <span class="colored-text">linkedIn</span>
+      <a href={{contacts.linkedin}} target="_blank" class="white-text inline-link">{{name}}</a>
+    </li>
+    <li class="flex-item">
+      <span class="colored-text">location</span>
+      <span class="white-text">{{contacts.location}}</span>
+    </li>
+  </ul>
+
+  <h1 id="name">{{name}}</h1>
+  <span class="white-text role">{{role}}</span>
+  <hr>
+  <img src={{biopic}} class="biopic">
+  <span class="welcome-message">{{welcomeMessage}}</span>
+  {{#if skills}}
+    <h3 id="skills-h3">Skills at a Glance:</h3>
+    <ul id="skills" class="flex-column">
+      {{#each skills}}
+        <li class="flex-item"><span class="white-text">{{this}}</span>
+      </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>

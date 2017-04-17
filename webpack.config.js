@@ -19,6 +19,10 @@ module.exports = {
       {
         test: /\.html$/,
         use: ['file-loader?name=[name].[ext]']
+      },
+      {
+        test: /\.hbs$/,
+        use: ['handlebars-loader']
       }
     ]
   },
