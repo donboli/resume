@@ -71,17 +71,17 @@ window.bio = {
   display: function() {
     var template = require('../templates/bio.hbs');
     var bioHTML = template(this);
+
     $('#header').prepend(bioHTML);
 
     bio.displayFooter();
   },
 
   displayFooter: function() {
-    var formattedIconSkype = HTMLiconSkype.replace('#', bio.contacts.skype);
-    var formattedIconLinkedin = HTMLiconLinkedin.replace('#', bio.contacts.linkedin);
-    var formattedIconGithub = HTMLiconGithub.replace('#', "https://github.com/" + bio.contacts.github);
+    var template = require('../templates/footer.hbs');
+    var footerHTML = template(this);
 
-    $("#footerContacts").append(formattedIconSkype + formattedIconLinkedin + formattedIconGithub);
+    $("#lets-connect").append(footerHTML);
   }
 };
 
