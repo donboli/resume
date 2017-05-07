@@ -1,0 +1,13 @@
+<h2 class="subtitle">Projects</h2>
+{{#each projects}}
+  <div class="project-entry">
+    {{#link repository}}
+      {{title}}
+    {{/link}}
+    <div class="date-text">{{dates}}</div>
+    <p><br>{{description}}</p>
+    {{#each images}}
+      <img src={{this}}>
+    {{/each}}
+  </div>
+{{/each}}

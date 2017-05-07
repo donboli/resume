@@ -152,20 +152,10 @@ window.projects = {
   }],
 
   display: function() {
-    projects.projects.forEach(function(project) {
-      $("#projects").append(HTMLprojectStart);
+    var template = require('../templates/projects.hbs');
+    var projectsHTML = template(this);
 
-      var formattedTitle = HTMLprojectTitle.replace("#", project.repository).replace(data, project.title);
-      var formattedDates = HTMLprojectDates.replace(data, project.dates);
-      var formattedDescription = HTMLprojectDescription.replace(data, project.description);
-
-      var formattedImage = "";
-      project.images.forEach(function(image) {
-        formattedImage += HTMLprojectImage.replace(data, image);
-      });
-
-      $(".project-entry:last").append(formattedTitle + formattedDates + formattedDescription + formattedImage);
-    });
+    $("#projects").append(projectsHTML);
   }
 };
 
