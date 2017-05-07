@@ -22,7 +22,14 @@ module.exports = {
       },
       {
         test: /\.hbs$/,
-        use: ['handlebars-loader']
+        use: [{
+          loader: 'handlebars-loader',
+          options: {
+            helperDirs: [
+              path.resolve('src/templates/helpers')
+            ]
+          }
+        }],
       }
     ]
   },
