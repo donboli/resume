@@ -1,0 +1,274 @@
+@import url(https://fonts.googleapis.com/css?family=Catamaran);body,
+div,
+ul,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+  font-family: "Catamaran", sans-serif;
+}
+
+body {
+  visibility: hidden;
+}
+
+.clear-fix {
+  overflow: auto;
+}
+
+.education-entry,
+.work-entry,
+.project-entry {
+  padding: 0 5%;
+}
+
+h1 {
+  font-size: 40px;
+  color: #C7F8B5;
+  line-height: 48px;
+  display: inline;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 24px;
+  color: #999;
+  line-height: 29px;
+  padding: 10px;
+}
+
+h3 {
+  font-style: italic;
+  font-size: 20px;
+  color: #000;
+  line-height: 22px;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 16px;
+  color: #4a4a4a;
+  line-height: 17px;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  padding: 10px 5%;
+}
+
+.date-text {
+  font-style: italic;
+  font-size: 16px;
+  color: #999;
+  line-height: 16px;
+  float: left;
+}
+
+.location-text {
+  font-style: italic;
+  font-size: 16px;
+  color: #999;
+  line-height: 16px;
+  float: right;
+}
+
+p {
+  font-size: 16px;
+  color: #333;
+  line-height: 21px;
+}
+
+a {
+  color: #1199c3;
+  text-decoration: none;
+  margin-top: 10px;
+  display: block;
+}
+
+.welcome-message {
+  font-style: italic;
+  font-size: 18px;
+  color: #f3f3f3;
+  line-height: 28px;
+}
+
+#skills-h3 {
+  color: #B4CDEF;
+  display: none;
+}
+
+.gradient .subtitle,
+.gradient .date-text {
+  color: #fff;
+}
+
+#footerContacts .fa:before {
+  color: white;
+}
+
+.colored-text {
+  color: #B4CDEF;
+}
+
+.white-text {
+  font-weight: bold;
+  color: #fff;
+}
+
+.inline-link {
+  display: inline;
+}
+
+.gradient {
+  background: #18967A;
+  background: -webkit-linear-gradient(left top, #7ADAC4, #18967A);
+  background: -o-linear-gradient(bottom right, #7ADAC4, #18967A);
+  background: -moz-linear-gradient(bottom right, #7ADAC4, #18967A);
+  background: linear-gradient(to bottom right, #7ADAC4, #18967A);
+  padding-bottom: 10px;
+  clear: both;
+}
+
+.dark-gray {
+  background-color: #4a4a4a;
+  box-shadow: 0 -2px 10px 5px #4c4c4c;
+}
+
+/* TODO: Replace with image later */
+#header {
+  background: #18967A;
+  background: -webkit-linear-gradient(left top, #235599, #18967A);
+  background: -o-linear-gradient(bottom right, #235599, #18967A);
+  background: -moz-linear-gradient(bottom right, #235599, #18967A);
+  background: linear-gradient(to bottom right, #235599, #18967A);
+}
+
+#header, .gradient {
+  box-shadow: 0 5px 5px #ccc;
+}
+
+#workExperience,
+#education {
+  padding: 5px 0 10px;
+}
+
+.certificate {
+  margin: 0;
+  clear: both;
+}
+
+.flex-box {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 10px;
+}
+
+.center-content {
+  padding: 2.5% 5%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.biopic {
+  float: left;
+  padding: 0;
+  margin: 10px;
+  width: 200px;
+  border-radius: 10px 50px;
+  box-shadow: -5px 5px 10px #18967A;
+}
+
+img {
+  margin: 10px 0;
+  border-radius: 5px;
+  width: auto;
+  max-width: 530px;
+}
+
+span {
+  padding: 5px;
+}
+
+#lets-connect {
+  text-align: center;
+}
+
+#map {
+  display: block;
+  height: 80%;
+  margin: 0 5%;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #666;
+}
+
+#mapDiv {
+  height: 400px;
+  width: 100%;
+}
+
+/* Media queries to handle various device widths */
+
+@media only screen and (max-width:900px) {
+  .biopic {
+    width: 175px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .biopic {
+    width: 150px;
+  }
+
+  .welcome-message {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  img {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  #mapDiv {
+    padding-bottom: 30px;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  #skills-h3,
+  .biopic {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 432px) {
+  .role {
+    display: none;
+  }
+
+  #name {
+    font-size: 35px;
+  }
+}
