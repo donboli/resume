@@ -134,24 +134,10 @@ window.work = {
   }],
 
   display: function() {
-    work.jobs.forEach(function(job) {
-      $("#workExperience").append(HTMLworkStart);
+    var template = require('../templates/work.hbs');
+    var workHTML = template(this);
 
-      var formattedEmployer = HTMLworkEmployer.replace("#", job.url).replace(data, job.employer);
-      var formattedTitle = HTMLworkTitle.replace(data, job.title);
-      var formattedDates = HTMLworkDates.replace(data, job.dates);
-      var formattedLocation = HTMLworkLocation.replace(data, job.location);
-      var formattedDescription = HTMLworkDescription.replace(data, job.description);
-
-      $(".work-entry:last").append(formattedEmployer + formattedTitle + formattedDates + formattedLocation + formattedDescription);
-    });
-
-    // $("#main").append(internationalizeButton);
-
-    var inName = function(name) {
-      var names = name.trim().split(" ");
-      return names[0][0].toUpperCase() + names[0].slice(1).toLowerCase() + " " + names[1].toUpperCase();
-    };
+    $("#workExperience").append(workHTML);
   }
 };
 

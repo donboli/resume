@@ -1,0 +1,12 @@
+<h2 class="subtitle">Work Experience</h2>
+{{#each jobs}}
+  <div class="work-entry">
+    {{#link url}}
+      {{employer}} - {{title}}
+    {{/link}}
+    <div class="date-text">{{dates}}</div>
+    <div class="location-text">{{location}}</div>
+    <br/>
+    <p>{{description}}</p>
+  </div>
+{{/each}}
